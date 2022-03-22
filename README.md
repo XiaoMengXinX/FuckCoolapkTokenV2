@@ -20,13 +20,13 @@ func main() {
 
 output:
 
-```aidl
+```
 Random devicde code: IDMw4SNwEDMyIjLBFTUTByOhRDIsVGepBFI7UGbn92bHByOlx2Zv92RgszM4oTO5oTZ4ojYlpTO0oDNwAyOgsDI7MjM0cjRCFENFREOGNzNwQUM1AzN4YkQwgTOwMzMDNTM
 Random token: v2JDJ5JDEwJE1UWTBOemt6TVRJME5BLzA4NWI0M3U1NzdKdDFMOUVFTm9Mb3I2WUwwbWFXQ1Q2bHJtN2NP
 ```
 
-###Enjoy it~
+### Enjoy it~
 
-##Thanks to
+## Thanks to
 
 [QQ little ice](https://github.com/qqlittleice233)
