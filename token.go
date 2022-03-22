@@ -12,8 +12,6 @@ import (
 	"time"
 )
 
-var aid []string
-var mac []string
 var manufactor = "Google"
 var brand = "Google"
 var model = []string{
@@ -28,26 +26,13 @@ var model = []string{
 }
 var buildNumber = []string{
 	"SQ1A.220105.002",
-	"SQ1A.220105.002",
-	"SQ1A.220105.002",
-	"SQ1A.220105.002",
-	"SQ1A.220105.002",
-	"SQ1A.220105.002",
 	"SQ1D.220105.007",
-	"SQ1D.220105.007",
-}
-
-func init() {
-	for i := 0; i < 20; i++ {
-		aid = append(aid, randHexString(16))
-		mac = append(mac, randMacAdress())
-	}
 }
 
 // GetToken Generate a token with random device info
 func GetToken() (randDeviceCode, token string) {
-	rand.Seed(time.Now().UnixNano())
-	randDeviceCode = CreateDeviceCode(aid[rand.Intn(len(aid))], mac[rand.Intn(len(mac))], manufactor, brand, model[rand.Intn(len(model))], buildNumber[rand.Intn(len(buildNumber))])
+	//rand.Seed(time.Now().UnixNano())
+	randDeviceCode = CreateDeviceCode(randHexString(16), randMacAdress(), manufactor, brand, model[rand.Intn(len(model))], buildNumber[rand.Intn(len(buildNumber))])
 	return randDeviceCode, GetTokenWithDeviceCode(randDeviceCode)
 }
 
@@ -77,6 +62,7 @@ func CreateDeviceCode(aid, mac, manufactor, brand, model, buildNumber string) st
 }
 
 func randMacAdress() string {
+	rand.Seed(time.Now().UnixNano())
 	var macAdress string
 	for i := 0; i < 6; i++ {
 		macAdress += fmt.Sprintf("%02x", rand.Intn(256))
@@ -88,9 +74,9 @@ func randMacAdress() string {
 }
 
 func randHexString(n int) string {
+	rand.Seed(time.Now().UnixNano())
 	bytes := make([]byte, n)
 	for i := 0; i < n; i++ {
-		rand.Seed(time.Now().UnixNano())
 		bytes[i] = byte(rand.Intn(256))
 	}
 	return strings.ToUpper(hex.EncodeToString(bytes))
